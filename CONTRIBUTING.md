@@ -187,9 +187,9 @@ text in here
 ```
 ````
 
-Everything else was written and formated by me.
+Everything else was writen and formated by me.
 
 
-*Document writen and created by Aleksander Pietras*
+*Document created and writen by Aleksander Pietras*
 
 *Date 28/10/2025*
