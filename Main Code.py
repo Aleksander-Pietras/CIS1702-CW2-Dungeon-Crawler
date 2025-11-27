@@ -1,24 +1,35 @@
-room_list=[] #Holds the room dictionaries.
-loot_list=[] #Holds the loot dictionaries.
-monster_list=[] #Holds the monster dictionaries.
 
-"""Writes the entire list of rooms to the json file."""
-def write_rooms(room_list): #For now has the list taken as an argument. Idk if that's what I'm supposed to do.
+
+"""Writes everything to file in the form of a list of lists of dictionaries."""
+def write_rooms(room_list,loot_list,monster_list): #For now has the lists taken as an argument. Idk if that's what I'm supposed to do.
     import json
-    jtext=json.dumps(room_list)
-    with open("rooms.json","w") as f:
+    list_of_lists=[room_list,loot_list,monster_list]
+    jtext=json.dumps(list_of_lists,indent=3)
+    with open("dungeon_crawler_content.json","w") as f:
         f.write(jtext)
 
-"""Writes the entire list of loot to the json file."""
-def write_loot(loot_list): #For now has the list taken as an argument. Idk if that's what I'm supposed to do.
+"""Loads the information from the json and returns the list that contains the lists of dictionaries."""
+def load_content():
     import json
-    jtext=json.dumps(loot_list)
-    with open("loot.json","w") as f:
-        f.write(jtext)
+    list_of_lists=[]
+    try:
+        with open("dungeon_crawler_content.json","r") as f:
+            json_content=f.read()
+            list_of_lists=json.loads(json_content)
+    except:
+        print("ERROR:File not found.")
+        #We'll probably need more than just an error message if the data has failed to load.
+    return list_of_lists
 
-"""Writes the entire list of monsters to the json file."""
-def write_monsters(monster_list): #For now has the list taken as an argument. Idk if that's what I'm supposed to do.
-    import json
-    jtext=json.dumps(monster_list)
-    with open("monsters.json","w") as f:
-        f.write(jtext)
+"""Used for running other methods. Dictates the order things are done."""
+def main():
+    #Loads lists and seperates them
+    list_of_lists=load_content()
+    room_list=list_of_lists[0]
+    loot_list=list_of_lists[1]
+    monster_list=list_of_lists[2]
+    #
+    write_rooms(room_list,loot_list,monster_list) #Useful for when we want to change stuff, even if it won't actually be used in game running.
+
+
+main()
