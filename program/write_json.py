@@ -22,6 +22,7 @@ def overwrite_json(path, filename, new_data):
         raise Exception("Crashed on purpose to FORCE stop the function")
     
     else:
+        print("-" * 30)
         print(f"Overwriting file: {filename}")
         print(f"This action will delete all data currently in {filename}:\ndata in {filename}")
         print(current_data)
@@ -31,6 +32,7 @@ def overwrite_json(path, filename, new_data):
         
         with open(path, mode="w") as f:
             json.dump(new_data, f, indent=4)
+            print("File overwriten sucessfully")
 
 def add_json(path, data):
     try:
@@ -64,4 +66,6 @@ if __name__ == "__main__":
             }
         }
     }
+
+    overwrite_json(FILE_PATH, FILENAME, data)
     
