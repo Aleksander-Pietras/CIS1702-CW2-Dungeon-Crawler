@@ -4,13 +4,20 @@ And prevents duplicates of this code being in all files
 '''
 import json
 
-def read_json(FILENAME: str):
+def read_json(filename):
     try:
-        with open(FILENAME, mode="r") as f:
-            reader = f.read()
+        with open(filename, mode="r") as f:
+            data = json.load(f)
+            
+    except FileNotFoundError as error:
+        print(f"Issue \n{error}")
 
-    except FileNotFoundError as Error:
-        print(Error)
-        
     else:
-        return reader
+        return data
+
+
+''' MAIN execution block
+'''
+if __name__ == "__main__":
+    FILENAME = "database.json"
+    read_json(FILENAME)
