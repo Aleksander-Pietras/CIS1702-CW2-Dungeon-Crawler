@@ -34,4 +34,8 @@ def main():
     write_rooms(room_list, loot_list, monster_list) #Useful for when we want to change stuff, even if it won't actually be used in game running.
 
 
-main()
+''' Main Execution cycle
+Just in case we ever decide to use these functions
+'''
+if __name__ == "__main__":
+    main()
