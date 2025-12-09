@@ -3,6 +3,7 @@ Ensures Defencive Coding
 And prevents duplicates of this code being in all files
 '''
 import json
+from path_finder import file_path_finder_all
 
 def read_json(filename):
     try:
@@ -16,8 +17,10 @@ def read_json(filename):
         return data
 
 
-''' MAIN execution block
+''' LOCAL execution block
 '''
 if __name__ == "__main__":
     FILENAME = "database.json"
-    read_json(FILENAME)
+    file_path = file_path_finder_all(FILENAME)
+    data = read_json(file_path)
+    print(data)
