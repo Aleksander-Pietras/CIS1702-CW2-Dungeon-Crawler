@@ -1,41 +1,67 @@
 ''' This program will be used to write/add new data to the JSON file
 This is so that, we do not write data into the JSON manualy
 '''
-
 import json
+from path_finder import file_path_finder_all
 
-"""Writes everything to file in the form of a list of lists of dictionaries."""
-def write_rooms(room_list, loot_list, monster_list): #For now has the lists taken as an argument. Idk if that's what I'm supposed to do.
-    list_of_lists = [room_list, loot_list, monster_list]
-    jtext = json.dumps(list_of_lists, indent=4)
-    with open("dungeon_crawler_content.json", "w") as f:
-        f.write(jtext)
-
-"""Loads the information from the json and returns the list that contains the lists of dictionaries."""
-def load_content():
-    list_of_lists = []
+def overwrite_json(path, filename, new_data):
+    ''' Safely overwrite JSON file ONLY when called intentionally
+    - Requires user autharisation
+    - Only runs in file: write_json.py
+    '''
+    if __name__ != "__main__":
+        raise PermissionError(
+            "function: overwrite_json can only run in write_json.py"
+            )
     try:
-        with open("dungeon_crawler_content.json", "r") as f:
-            json_content = f.read()
-            list_of_lists = json.loads(json_content)
-    except:
-        print("ERROR:File not found.")
-        #We'll probably need more than just an error message if the data has failed to load.
-    return list_of_lists
+        with open(path, mode="r") as f:
+            current_data = json.load(f)
 
-"""Used for running other methods. Dictates the order things are done."""
-def main():
-    #Loads lists and seperates them
-    list_of_lists = load_content()
-    room_list = list_of_lists[0]
-    loot_list = list_of_lists[1]
-    monster_list = list_of_lists[2]
+    except:
+        print("The function: overwrite_json has ran into an unknown issue")
+        raise Exception("Crashed on purpose to FORCE stop the function")
     
-    write_rooms(room_list, loot_list, monster_list) #Useful for when we want to change stuff, even if it won't actually be used in game running.
+    else:
+        print(f"Overwriting file: {filename}")
+        print(f"This action will delete all data currently in {filename}:\ndata in {filename}")
+        print(current_data)
+        confirm = input("Type YES to overwrite:\n")
+        if confirm.strip().upper() != "YES":
+            raise Exception("Chrashed on purpose")
+        
+        with open(path, mode="w") as f:
+            json.dump(new_data, f, indent=4)
+
+def add_json(path, data):
+    try:
+        with open(path, mode="a") as f:
+            json.dump(data, indent=4)
+    
+    except FileNotFoundError as error:
+        print(f"Issue \n{error}")
 
 
 ''' Main Execution cycle
 Just in case we ever decide to use these functions
 '''
 if __name__ == "__main__":
-    main()
+    FILENAME = "database.json"
+    FILE_PATH = file_path_finder_all(FILENAME)
+
+# this only exists temparely as my test data, feel free to delete when you are ready to add actual data
+    data = {
+        "rooms": {
+            1: "stats", 2: "stats"
+        },
+        "entities": {
+            "NPC": {
+                "npc1": [
+                    "diaulouge", {"shop items": "shop prices"}
+                ]
+            },
+            "enemies": {
+                "more random space wasiting info": "this is only here so that the database is not empty"
+            }
+        }
+    }
+    
