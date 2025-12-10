@@ -1,0 +1,134 @@
+function lobby(room_list,loot_list,monster_list,player_stats)
+	OUTPUT "Talk to dungeon keeper?"
+	INPUT choice
+	IF choice=="yes"
+		run_dialogue()
+	ELSE
+		OUTPUT "Entering dungeon..."
+		dungeon_crawl(room_list,loot_list,monster_list)
+
+function run_dialogue()
+	OUTPUT NPC Dialogue
+	
+function dungeon_crawl(room_list,loot_list,monster_list,player_stats)
+	room=generate_room(room_list)
+	monster=generate_enemy(monster_list)
+	player_stats=fight(monster,player_stats)
+	clear=true
+	IF player_stats[health]<=0
+		clear=false
+	ELSE
+		#clear remains true
+	IF clear==true
+		loot(loot_list,player_stats)
+		quit=save_game(player_stats)
+		IF quit==false
+			choose_direction(room)
+			dungeon_crawl(room_list,loot_list,monster_list) #Recursive function
+		ELSE
+			#Game end
+	ELSE
+		game_over()
+
+function generate_room(room_list)
+	room_index=GET random integer FROM 0 TO room_list.length
+	return room_list[room_index]
+	
+function generate_enemy(monster_list)
+	monster_index=GET random integer FROM 0 TO monster_list.length
+	return monster_list[monster_index]
+
+function fight(monster, player_stats)
+	killed=false
+	count=0
+	WHILE killed==false AND player_stats[health]>0
+		count=count+1
+		OUTPUT "Turn "+count
+		OUTPUT player_stats
+		OUTPUT "Basic attack, magic attack or potion?"
+		INPUT choice
+		IF choice=="basic attack"
+			monster[health]=monster[health]-(player_stats[basic_attack]+player_stats[melee_weapon][added_melee_damage]) #Deals the player's melee attack stat to the monster.
+		ELIF choice=="magic attack"
+			player_stats[mana]=player_stats[mana]-10
+			IF player_stats[mana]<0 #If player cannot make the mana cost.
+				player_stats[mana]=0 #Sets to 0. We don't like negative mana.
+				OUTPUT "You spent all your remaining mana but couldn't pull off the spell!
+			ELSE
+				monster[health]=monster[health]-(player_stats[magic_attack]+player_stats[magic_weapon][added_magic_damage]) #Deals the player's magic attack stat to the monster.
+		ELSE
+			IF player_stats[potion]!=null #Uses potion
+				stat_to_change=player_stats[potion][effect]
+				player_stats[stat_to_change]=player_stats[stat_to_change]+player_stats[potion][amount]
+				player_stats[potion]=null
+			ELSE
+				OUTPUT "Action failed! You have no potion."
+		
+		IF monster[health]<=0
+			killed=true
+		ELSE
+			OUTPUT monster[monster_name]+"'s Turn"
+			OUTPUT "monster[monster_name] attacks you for "+monster[damage]+" damage!"
+			player_stats[health]=player_stats[health]-monster[damage]
+	
+	return player_stats
+
+function loot(loot_list,player_stats)
+	loot_index=GET random integer FROM 0 TO loot_list.length
+	new_loot=loot_list[loot_index]
+	keep=keep_loot(new_loot,player_stats)
+	IF keep==true
+		player_stats[new_loot[type]]=new_loot
+	ELSE
+		#Stuck with old item.
+	return player_stats
+	
+function keep_loot(new_loot,player_stats)
+	OUTPUT "You have found "+new_loot+"! Would you like to replace your "+player_stats[new_loot[type]]+"?"
+	INPUT choice
+	keep=false
+	IF choice=="yes"
+		keep=true
+	ELSE
+		#keep stays false
+	return keep
+	
+function save_game(player_stats)
+	WRITE player_stats TO "save_file.json"
+	quit=end_game(player_stats)
+	return quit
+
+function choose_direction(room)
+	OUTPUT "Which door would you like to go through?"
+	FOR i in range room[doors]
+		OUTPUT "Door "+i
+	INPUT choice
+	IF i>0 AND i<=room[doors]
+		OUTPUT "Entering room..."
+	ELSE
+		OUTPUT "That was not a valid selection."
+		choose_direction(room)
+		
+function end_game(player_stats)
+	OUTPUT "Your progress has saved. Would you like to quit?"
+	INPUT choice
+	quit=false
+	IF choice=="yes"
+		quit=true
+	ELSE
+		OUTPUT "The journey continues..."
+	return quit
+
+function game_over()
+	OUTPUT "This seems to be the end of your journey. You always knew the surface was not somewhere you could return."
+START
+
+room_list=[] #Filled with data.
+loot_list=[{weapon_name="basic_sword",type=melee_weapon,added_melee_damage=1},{weapon_name="basic_staff",type=magic_weapon,added_magic_damage=1}] #Filled with data.
+monster_list=[] #Filled with data.
+#We can say that the basic weapons are at the start of the list so this can be hardcoded.
+basic_sword=loot_list[0]
+basic_staff=loot_list[1]
+player_stats={health=100,mana=50,basic_attack=1,magic_attack=2,melee_weapon=basic_sword,magic_weapon=basic_staff,potion=null}
+
+lobby(room_list,loot_list,monster_list,player_stats)
