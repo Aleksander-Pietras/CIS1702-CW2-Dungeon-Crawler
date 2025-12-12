@@ -37,7 +37,7 @@ def overwrite_json(path, filename, new_data):
 def add_json(path, data):
     try:
         with open(path, mode="a") as f:
-            json.dump(data, indent=4)
+            json.dump(data, f, indent=4)
     
     except FileNotFoundError as error:
         print(f"Issue \n{error}")
@@ -67,5 +67,6 @@ if __name__ == "__main__":
         }
     }
 
+    add_json(FILE_PATH, data)
     overwrite_json(FILE_PATH, FILENAME, data)
     
