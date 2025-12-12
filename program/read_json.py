@@ -16,6 +16,9 @@ def read_json(filename):
     else:
         return data
 
+def fetch_data(data_name, data):
+    special_data = data[data_name]
+    return special_data
 
 ''' LOCAL execution block
 '''
