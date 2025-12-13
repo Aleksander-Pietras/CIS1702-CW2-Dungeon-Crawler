@@ -3,7 +3,7 @@ Ensures Defencive Coding
 And prevents duplicates of this code being in all files
 '''
 import json
-from path_finder import file_path_finder_all
+from program.extra_usefull.path_finder import file_path_finder_all
 
 def read_json(filename):
     try:

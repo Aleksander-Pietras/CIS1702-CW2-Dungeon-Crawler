@@ -1,5 +1,5 @@
 import json
-from read_json import *
+from program.read_write_json.read_json import *
 
 class player:
     def __init__(self):
