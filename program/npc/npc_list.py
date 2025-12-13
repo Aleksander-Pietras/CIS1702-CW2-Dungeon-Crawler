@@ -9,3 +9,6 @@ npcs = {
         "into text": "Hello my frined, stay for a while and listen"
     }
 }
+
+if __name__ == "__main__":
+    print( list(npcs.keys()) )
