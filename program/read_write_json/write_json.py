@@ -2,7 +2,7 @@
 This is so that, we do not write data into the JSON manualy
 '''
 import json
-from path_finder import file_path_finder_all
+from program.extra_usefull.path_finder import file_path_finder_all
 
 def overwrite_json(path, filename, new_data):
     ''' Safely overwrite JSON file ONLY when called intentionally
