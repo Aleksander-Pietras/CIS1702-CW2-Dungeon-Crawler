@@ -6,8 +6,9 @@ import json
 from program.extra_usefull.path_finder import file_path_finder_all
 
 def read_json(filename):
+    filepath = file_path_finder_all(filename)
     try:
-        with open(filename, mode="r") as f:
+        with open(filepath, mode="r") as f:
             data = json.load(f)
             
     except FileNotFoundError as error:
