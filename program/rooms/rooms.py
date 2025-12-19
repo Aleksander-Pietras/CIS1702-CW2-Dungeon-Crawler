@@ -23,6 +23,23 @@ def add_room(rooms):
         print("rooms does not exist in JSON")
 
 def create_room():
+    '''
+    f: create_room()
+    takes no parameters
+    returns: simple room template that is ready to be added to JSON
+
+    create_room:
+        - name
+        - description
+        - visited (room_state)
+        - npc_active
+        - npc (The name of the npc present IF npc_active)
+        - enemies_active
+        - enemies (The type of enemies in the room)
+        - enemies_count
+        - exta_functon [True/False] (Used so main can check if there are extra functions that the room should preform)
+        - connections (Door: N, S, E, W)
+    '''
     room_name = input("Enter the name of the room:\n")
 
     room = {
