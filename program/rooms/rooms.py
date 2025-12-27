@@ -1,6 +1,8 @@
 ''' Temparary program for rooms
 '''
 import json
+from program.read_write_json.read_json import read_json
+from program.read_write_json.write_json import update_room
 
 try:
     from program.extra_usefull.validation_for_inputs import valid_bool, valid_int
@@ -10,7 +12,7 @@ except:
     print("Call the program by typing")
     print("python -m program.rooms.rooms\nin the Terminal")
     raise Exception(
-        "Stoped the code on purpose"
+        "Stopped the code on purpose"
     )
 
 def add_room(rooms):
@@ -90,10 +92,34 @@ def create_room():
 
     return room
 
+def add_desc(room, description):
+    '''Takes in a room and a description and updates the room to have that description.
+    Rooms can have multiple descriptions
+    Descriptions are numbered. Will automatically make the new description the next number.'''
+    desc_num = -1
+    new_desc_num = 0
+    count = 0
+    while desc_num<new_desc_num:
+        desc_num = new_desc_num
+        count = count + 1
+        desc = f"description{count}"
+        if desc in room:
+            new_desc_num = count
+        
+    new_desc_num=new_desc_num+1
+    desc=f"description{new_desc_num}"
+    room[desc]=description
+    update_room(room)
+
+'''
 if __name__ == "__main__":
     rooms = {}
     room = create_room()
     room_name = room["name"]
     rooms[room_name] = room
 
-    print(room)
+    print(room)'''
+
+data=read_json("database.json")
+room=data["rooms"]["basement"]
+add_desc(room, "The floorboards creak softly as you move.")
