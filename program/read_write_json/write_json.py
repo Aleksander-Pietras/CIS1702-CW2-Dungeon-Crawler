@@ -6,8 +6,9 @@ from program.extra_usefull.path_finder import file_path_finder_all
 from program.read_write_json.read_json import read_json
 
 def overwrite_json(new_data):
-    'Updates the database.json with new data.'
-    'Can only add one dictionary at a time'
+    '''Updates the database.json with new data.
+    Data can be of types: room, monster, npc
+    Can only add one dictionary at a time'''
     filename = "database.json"
     path = file_path_finder_all(filename)
     current_data = read_json(filename)
