@@ -2,10 +2,33 @@
 The code in here should only be specifically relevent to the game
 '''
 import json
+from program.extra_usefull.path_finder import file_path_finder_all
+from program.read_write_json.read_json import read_json
+from program.rooms.rooms import choose_room
+from program.rooms.rooms import choose_random_description
 
-
+# main execution loop
 if __name__ == "__main__":
+    FILENAME = "database.json"
+    FILE_PATH = file_path_finder_all(FILENAME)
+
+    game_data = read_json(FILE_PATH)
+    rooms_data = game_data["rooms"]
+    # enemies_data = game_data["enemies"] # Still waiting for Logan to add enemies
+    npcs_data = game_data["npcs"]
+
+    start_room = rooms_data["test_room"] # This is temporary until real rooms exist
+    current_room = start_room
     while True:
-        print("Hello World")
+        # Some intro text here
+        print(f"You are in the {current_room['name']}")
+
+        description = choose_random_description(current_room)      
+        print(description)
+
+
         
-    # main execution loop
+
+        
+        
+    

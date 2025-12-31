@@ -6,6 +6,11 @@ import json
 from program.extra_usefull.path_finder import file_path_finder_all
 
 def read_json(filename):
+    '''
+    input: filename
+    
+    NOT file path
+    '''
     filepath = file_path_finder_all(filename)
     try:
         with open(filepath, mode="r") as f:

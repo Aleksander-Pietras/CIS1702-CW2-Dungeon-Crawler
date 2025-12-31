@@ -108,8 +108,18 @@ def add_desc(room, description):
     room[desc]=description
     update_room(room)
 
+def choose_random_description(room: dict):
+    '''
+    Chooses a description from the database and returns it
+    '''
+    descriptions = []
+    for desc in room.keys():
+        if "description" in desc:
+            descriptions.append(room[desc])
 
-def choose_room(rooms):
+    return choice(descriptions)
+
+def choose_room(rooms: dict):
     '''
     Chooses a room from the database and returns it
 
