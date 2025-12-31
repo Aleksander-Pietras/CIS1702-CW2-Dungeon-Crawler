@@ -109,7 +109,7 @@ def add_desc(room, description):
     update_room(room)
 
 
-def choose_room():
+def choose_room(rooms):
     '''
     Chooses a room from the database and returns it
 
@@ -118,8 +118,6 @@ def choose_room():
 
     comment: currently chooses a room at random
     '''
-    data = read_json("database.json")
-    rooms = data["rooms"]
 
     len_rooms = len(rooms)
     choose_room = choice(list(rooms.keys()))
