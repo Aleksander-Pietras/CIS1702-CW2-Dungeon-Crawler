@@ -1,10 +1,10 @@
 ''' Temparary program for rooms
 '''
-import json
-from program.read_write_json.read_json import read_json
-from program.read_write_json.write_json import update_room
 
 try:
+    import json
+    from program.read_write_json.read_json import read_json
+    from program.read_write_json.write_json import update_room
     from program.extra_usefull.validation_for_inputs import valid_bool, valid_int
     from program.npc.npc_list import npcs
 
@@ -15,14 +15,6 @@ except:
         "Stopped the code on purpose"
     )
 
-def add_room(rooms):
-    raise NotImplementedError # some other data need to be passed
-    try:
-        general_data = read_json(FILENAME)
-        data = fetch_data("rooms", general_data)
-        print(data)
-    except:
-        print("rooms does not exist in JSON")
 
 def create_room():
     '''
@@ -115,12 +107,16 @@ def add_desc(room, description):
 if __name__ == "__main__":
     rooms = {}
     room = create_room()
-    
+
     # just re-names the room for the purpose of easier access later
     room_name = room["name"]
     rooms[room_name] = room
 
     print(room)
+    
+    # >>> Then add the room to the database
+
+
 
 
 # Code for adding additional descriptions
