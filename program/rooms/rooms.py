@@ -89,10 +89,11 @@ def create_room():
     room["extra_function_active"] = extra_function_active
     return room
 
-def add_desc(room, description):
+def add_desc(room):
     '''Takes in a room and a description and updates the room to have that description.
     Rooms can have multiple descriptions
     Descriptions are numbered. Will automatically make the new description the next number.'''
+    description=input(f"Please enter the new description for the {room["name"]}.")
     desc_num = -1
     new_desc_num = 0
     count = 0
@@ -141,16 +142,9 @@ if __name__ == "__main__":
     room_name = room["name"]
     rooms[room_name] = room
 
-    print(room)
-    
-    # >>> Then add the room to the database
+    print(room)'''
 
-
-
-
-# Code for adding additional descriptions
-'''
+#Testing add_desc()
 data=read_json("database.json")
 room=data["rooms"]["basement"]
-add_desc(room, "The floorboards creak softly as you move.")
-'''
+add_desc(room)
