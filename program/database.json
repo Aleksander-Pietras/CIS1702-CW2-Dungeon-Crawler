@@ -9,7 +9,23 @@
             "extra_function_active": false,
             "active": false,
             "description1": "The floorboards creak softly as you move."
+        },
+        "test_room": { 
+            "_comment" : "// Added by hand for testing purposes, NEEDS TO BE REMOVED LATER",
+            "name": "test_room",
+            "description": "PLACE HOLDER",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            }
         }
     },
+
     "monsters": {}
 }
