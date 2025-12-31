@@ -111,15 +111,21 @@ def add_desc(room, description):
     room[desc]=description
     update_room(room)
 
-'''
+
 if __name__ == "__main__":
     rooms = {}
     room = create_room()
+    
+    # just re-names the room for the purpose of easier access later
     room_name = room["name"]
     rooms[room_name] = room
 
-    print(room)'''
+    print(room)
 
+
+# Code for adding additional descriptions
+'''
 data=read_json("database.json")
 room=data["rooms"]["basement"]
 add_desc(room, "The floorboards creak softly as you move.")
+'''
