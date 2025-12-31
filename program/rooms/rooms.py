@@ -1,8 +1,11 @@
 ''' Temparary program for rooms
 '''
 
+from random import choice
+import json
+
 try:
-    import json
+
     from program.read_write_json.read_json import read_json
     from program.read_write_json.write_json import update_room
     from program.extra_usefull.validation_for_inputs import valid_bool, valid_int
@@ -35,8 +38,12 @@ def create_room():
         - connections (Door: N, S, E, W)
     '''
     room_name = input("Enter the name of the room:\n")
+    author_name = input("Enter the author's name for this room:\n (enter your name)\n")
 
     room = {
+        "_meta" : {
+            "author" : author_name
+        },
         "name" : room_name,
         "description" : "PLACE HOLDER",
         "visited": False,
@@ -78,10 +85,8 @@ def create_room():
         room["npc"] = npc_names[selection - 1]
 
 
-
     room["enemies_active"] = enemies_active
     room["extra_function_active"] = extra_function_active
-
     return room
 
 def add_desc(room, description):
@@ -103,6 +108,22 @@ def add_desc(room, description):
     room[desc]=description
     update_room(room)
 
+
+def choose_room():
+    '''
+    Chooses a room from the database and returns it
+
+    f: functionality reserved for the running of the game
+    THIS FUNCTION EXISTS FOR THE GAME NOT TO BE CALLED DIRECTLY
+
+    comment: currently chooses a room at random
+    '''
+    data = read_json("database.json")
+    rooms = data["rooms"]
+
+    len_rooms = len(rooms)
+    choose_room = choice(list(rooms.keys()))
+    return choose_room
 
 if __name__ == "__main__":
     rooms = {}
