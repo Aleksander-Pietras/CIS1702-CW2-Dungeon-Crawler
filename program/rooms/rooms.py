@@ -142,9 +142,11 @@ if __name__ == "__main__":
     room_name = room["name"]
     rooms[room_name] = room
 
-    print(room)'''
+    print(room)
 
+'''
 #Testing add_desc()
 data=read_json("database.json")
 room=data["rooms"]["basement"]
 add_desc(room)
+'''
