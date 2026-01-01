@@ -130,9 +130,36 @@ def choose_room(rooms: dict):
     comment: currently chooses a room at random
     '''
 
-    len_rooms = len(rooms)
     choose_room = choice(list(rooms.keys()))
     return choose_room
+
+def decide_on_directions(room: dict):
+    ''' Display and allow player to chooses which direction to travel to
+
+    parameters: room_data: dict
+
+    returns: users choosen direction
+    '''
+    connections = room["connections"]
+    valid_connections = []
+
+    for direction, is_open in connections.items():
+        if is_open:
+            valid_connections.append(direction)
+
+    while True:
+        try:
+            print(valid_connections)
+            choosen_direction = input(f"")
+
+        except:
+            pass
+
+        else:
+            return choosen_direction
+        
+
+
 
 if __name__ == "__main__":
     rooms = {}
