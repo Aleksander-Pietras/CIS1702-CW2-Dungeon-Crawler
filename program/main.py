@@ -12,7 +12,7 @@ if __name__ == "__main__":
     FILENAME = "database.json"
     FILE_PATH = file_path_finder_all(FILENAME)
 
-    game_data = read_json(FILE_PATH)
+    game_data = read_json(FILENAME)
     rooms_data = game_data["rooms"]
     # enemies_data = game_data["enemies"] # Still waiting for Logan to add enemies
     npcs_data = game_data["npcs"]

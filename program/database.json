@@ -14,6 +14,8 @@
             "_comment" : "// Added by hand for testing purposes, NEEDS TO BE REMOVED LATER",
             "name": "test_room",
             "description": "PLACE HOLDER",
+            "description2" : "THIS IS A DIFFERENT description",
+            "description3" : "WOW SO MANY",
             "visited": false,
             "npc_active": false,
             "enemies_active": false,
@@ -27,5 +29,6 @@
         }
     },
 
-    "monsters": {}
+    "enemies": {},
+    "npcs" : {}
 }
