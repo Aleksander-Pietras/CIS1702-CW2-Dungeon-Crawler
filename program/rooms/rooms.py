@@ -1,10 +1,13 @@
 ''' Temparary program for rooms
 '''
+
+from random import choice
 import json
-from program.read_write_json.read_json import read_json
-from program.read_write_json.write_json import update_room
 
 try:
+
+    from program.read_write_json.read_json import read_json
+    from program.read_write_json.write_json import update_room
     from program.extra_usefull.validation_for_inputs import valid_bool, valid_int
     from program.npc.npc_list import npcs
 
@@ -15,14 +18,6 @@ except:
         "Stopped the code on purpose"
     )
 
-def add_room(rooms):
-    raise NotImplementedError # some other data need to be passed
-    try:
-        general_data = read_json(FILENAME)
-        data = fetch_data("rooms", general_data)
-        print(data)
-    except:
-        print("rooms does not exist in JSON")
 
 def create_room():
     '''
@@ -43,8 +38,12 @@ def create_room():
         - connections (Door: N, S, E, W)
     '''
     room_name = input("Enter the name of the room:\n")
+    author_name = input("Enter the author's name for this room:\n (enter your name)\n")
 
     room = {
+        "_meta" : {
+            "author" : author_name
+        },
         "name" : room_name,
         "description" : "PLACE HOLDER",
         "visited": False,
@@ -86,10 +85,8 @@ def create_room():
         room["npc"] = npc_names[selection - 1]
 
 
-
     room["enemies_active"] = enemies_active
     room["extra_function_active"] = extra_function_active
-
     return room
 
 def add_desc(room):
@@ -112,16 +109,71 @@ def add_desc(room):
     room[desc]=description
     update_room(room)
 
-'''
+def choose_random_description(room: dict):
+    '''
+    Chooses a description from the database and returns it
+    '''
+    descriptions = []
+    for desc in room.keys():
+        if "description" in desc:
+            descriptions.append(room[desc])
+
+    return choice(descriptions)
+
+def choose_room(rooms: dict):
+    '''
+    Chooses a room from the database and returns it
+
+    f: functionality reserved for the running of the game
+    THIS FUNCTION EXISTS FOR THE GAME NOT TO BE CALLED DIRECTLY
+
+    comment: currently chooses a room at random
+    '''
+
+    choose_room = choice(list(rooms.keys()))
+    return choose_room
+
+def decide_on_directions(room: dict):
+    ''' Display and allow player to chooses which direction to travel to
+
+    parameters: room_data: dict
+
+    returns: users choosen direction
+    '''
+    connections = room["connections"]
+    valid_connections = []
+
+    for direction, is_open in connections.items():
+        if is_open:
+            valid_connections.append(direction)
+
+    while True:
+        try:
+            print(valid_connections)
+            choosen_direction = input(f"")
+
+        except:
+            pass
+
+        else:
+            return choosen_direction
+        
+
+
+
 if __name__ == "__main__":
     rooms = {}
     room = create_room()
+
+    # just re-names the room for the purpose of easier access later
     room_name = room["name"]
     rooms[room_name] = room
 
-    print(room)'''
+    print(room)
 
+'''
 #Testing add_desc()
 data=read_json("database.json")
 room=data["rooms"]["basement"]
 add_desc(room)
+'''
