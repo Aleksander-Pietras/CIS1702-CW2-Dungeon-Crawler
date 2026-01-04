@@ -28,6 +28,24 @@
             }
         }
     },
-    "enemies": {},
+    "enemies": {
+        "goblin": {
+            "enemy":"goblin", 
+            "attack":10, 
+            "health":50, 
+            "Gold_Drop": 5
+        },
+        "skeleton": {
+            "enemy":"skeleton", 
+            "attack":15, 
+            "health":70, 
+            "Gold_Drop": 10},
+        "orc": {
+            "enemy":"orc", 
+            "attack":25, 
+            "health":90, 
+            "Gold_Drop": 15
+        }
+    },
     "npcs" : {}
 }
