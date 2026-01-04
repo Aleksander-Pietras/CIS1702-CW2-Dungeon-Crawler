@@ -150,7 +150,7 @@ def decide_on_directions(room: dict):
     while True:
         try:
             print(valid_connections)
-            choosen_direction = input(f"")
+            choosen_direction = input(f"") #Remember to validate
 
         except:
             pass
