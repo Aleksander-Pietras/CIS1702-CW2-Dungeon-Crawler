@@ -10,12 +10,12 @@
             "active": false,
             "description2": "The floorboards creak softly as you move."
         },
-        "test_room": { 
-            "_comment" : "// Added by hand for testing purposes, NEEDS TO BE REMOVED LATER",
+        "test_room": {
+            "_comment": "// Added by hand for testing purposes, NEEDS TO BE REMOVED LATER",
             "name": "test_room",
             "description": "PLACE HOLDER",
-            "description2" : "THIS IS A DIFFERENT description",
-            "description3" : "WOW SO MANY",
+            "description2": "THIS IS A DIFFERENT description",
+            "description3": "WOW SO MANY",
             "visited": false,
             "npc_active": false,
             "enemies_active": false,
@@ -26,26 +26,234 @@
                 "east": false,
                 "west": false
             }
+        },
+        "Library": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Library",
+            "description": "There are books scattered across the floor.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Dining Hall": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Dining Hall",
+            "description": "The air is stale. It has been a long time since food has graced the large wooden table.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            }
+        },
+        "Armory": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Armory",
+            "description": "The floor is cold stone and the armour stands in still metal. You notice the startings of rust on each set. None of this seems useful.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": true,
+            "connections": {
+                "north": true,
+                "south": false,
+                "east": false,
+                "west": false
+            }
+        },
+        "Weaponry": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Weaponry",
+            "description": "There are boxes of spears in crates, most look on the verge of collapse as their construction fails from years of disuse. In front are shelves, each holding a single, once-powerful weapon. They are weak with age, but they may still be of use.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": true,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Shop": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Shop",
+            "description": "You step into a warm, inviting room. While the underlying construction still creaks with age, the air here thrums with activity. There is no one else in the shop, but you can see products along every shelf, each radiating a magic of its' own. The shopkeeper greets you from the counter across the room.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            },
+            "npc": "Shopkeeper Angus"
+        },
+        "Cave": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Cave",
+            "description": "This room is a dark, stone cavern. Eery noises echo through it.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Stream": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Stream",
+            "description": "You can hear a trickle of water from this room. A gentle sound in a cold place.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Boss Room": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Boss Room",
+            "description": "The air vibrates with danger and your adrenaline starts running. A wide open, well-lit chamber lies in front of you. The large door closes behind you. You feel vulnerable as you look up at the monster before you.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": true,
+                "west": false
+            },
+            "npc": "The Dark Lord"
+        },
+        "Tiny Tunnel": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Tiny Tunnel",
+            "description": "You crawl through a narrow opening and find that there really is a way forward. Your head pops out the otherside and you see a monster right ahead! You scramble out of the tiny tunnel quickly and ready for battle.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Humungous Hallway": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Humungous Hallway",
+            "description": "You find a very large passage to the next area. You proceed to the other side of the room when you suddenly find a monster attacking you! How did you not see it before?",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Alley": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Alley",
+            "description": "You find a place that gives the same impression as an alleyway, despite there not really being ways to alley. A man greets you from next to the dimly-lit wall.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": true,
+                "west": true
+            },
+            "npc": "Informat Caelan"
+        },
+        "Fountain": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Fountain",
+            "description": "You come upon a white fountain full of murky green water.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            }
         }
     },
     "enemies": {
         "goblin": {
-            "enemy":"goblin", 
-            "attack":10, 
-            "health":50, 
+            "enemy": "goblin",
+            "attack": 10,
+            "health": 50,
             "Gold_Drop": 5
         },
         "skeleton": {
-            "enemy":"skeleton", 
-            "attack":15, 
-            "health":70, 
-            "Gold_Drop": 10},
+            "enemy": "skeleton",
+            "attack": 15,
+            "health": 70,
+            "Gold_Drop": 10
+        },
         "orc": {
-            "enemy":"orc", 
-            "attack":25, 
-            "health":90, 
+            "enemy": "orc",
+            "attack": 25,
+            "health": 90,
             "Gold_Drop": 15
         }
     },
-    "npcs" : {}
+    "npcs": {}
 }
