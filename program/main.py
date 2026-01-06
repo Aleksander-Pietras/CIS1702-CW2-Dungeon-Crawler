@@ -58,9 +58,9 @@ if __name__ == "__main__": #Please can you make the main execution loop modular?
                     else:
                         enemies.append(enemies_data["orc"])
 
-                    player1.combat(enemies)
+                    #player1.combat(enemies)
 
-                    
+
                 rooms_data[current_room["name"]]["visited"] = True
                 visited_rooms[current_room["name"]] = current_room #Adds the room to visited dictionary.
                 if current_room != start_room:
