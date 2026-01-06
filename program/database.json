@@ -1,16 +1,5 @@
 {
     "rooms": {
-        "basement": {
-            "name": "basement",
-            "description1": "You fall down a shaft into a basement",
-            "visited": false,
-            "npc_active": false,
-            "enemies_active": false,
-            "extra_function_active": false,
-            "active": false,
-            "description2": "The floorboards creak softly as you move."
-        }
-    },
         "Library": {
             "_meta": {
                 "author": "Sophia"
@@ -219,6 +208,7 @@
             }
         }
     },
+
     "enemies": {
         "goblin": {
             "enemy": "goblin",
@@ -239,5 +229,6 @@
             "Gold_Drop": 15
         }
     },
+    
     "npcs": {}
 }
