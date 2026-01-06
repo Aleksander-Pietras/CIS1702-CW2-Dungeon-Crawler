@@ -8,42 +8,10 @@ from program.read_write_json.read_json import read_json
 from program.rooms.rooms import choose_room
 from program.rooms.rooms import choose_random_description
 from program.rooms.rooms import decide_on_directions
+from program.rooms.rooms import empty_room
 
-def empty_room():
-    """Displays text to say the same thing in different ways."""
-    rand_text=random.randint(0,3)
-    if rand_text==0:
-        print("The room is empty")
-    elif rand_text==1:
-        print("There's nothing in this room.")
-    elif rand_text==2:
-        print("This room is eerily quiet. There's nothing here.")
+from program.genesis import intro_text
 
-def room_options(current_room, visited_rooms):
-    """Used when in a room the player has already visited.
-    Shows the directions to rooms the player has visited
-    Tells the user about other directions they could go."""
-    if current_room["connections"]["north"]==True:
-        if visited_rooms[current_room["name"]]["connections"]["north"]!=True: #If the connection has been replaced with a room reference
-            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["north"]]}")
-        else:
-            print("You can proceed north.")
-    elif current_room["connections"]["east"]==True:
-        if visited_rooms[current_room["name"]]["connections"]["east"]!=True: #If the connection has been replaced with a room reference
-            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["east"]]}")
-        else:
-            print("You can proceed east.")
-    elif current_room["connections"]["south"]==True:
-        if visited_rooms[current_room["name"]]["connections"]["south"]!=True: #If the connection has been replaced with a room reference
-            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["south"]]}")
-        else:
-            print("You can proceed south.")
-    elif current_room["connections"]["west"]==True:
-        if visited_rooms[current_room["name"]]["connections"]["west"]!=True: #If the connection has been replaced with a room reference
-            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["west"]]}")
-        else:
-            print("You can proceed west.")
-    
 
 if __name__ == "__main__": #Please can you make the main execution loop modular? Even if you just put all this in a function, I'd be happier.-Sophia
     FILENAME = "database.json"
@@ -51,26 +19,23 @@ if __name__ == "__main__": #Please can you make the main execution loop modular?
 
     game_data = read_json(FILENAME)
     rooms_data = game_data["rooms"]
-    # enemies_data = game_data["enemies"] # Still waiting for Logan to add enemies
+    enemies_data = game_data["enemies"]
     npcs_data = game_data["npcs"]
 
-    start_room = rooms_data["test_room"] # This is temporary until real rooms exist
+    start_room = rooms_data[]
     current_room = start_room
     visited_rooms = {}
     try:
         while True:
-            # >>>>>>>> Some intro text here
+            intro_text()
+            
             print(f"You are in the {current_room["name"]}") # NOT TO BE THE FINAL TAKE
             
-
-            description = choose_random_description(current_room)      
-            print(description)
+            choose_random_description(current_room)
 
             if not current_room["enemies_active"]:
-                empty_room() #Outputs one of 3 options saying the room is empty.
+                empty_room()
 
-            
-            
             if not current_room["visited"]:
                 direction_choice = decide_on_directions(current_room)
                 rooms_data[current_room["name"]]["visited"] = True

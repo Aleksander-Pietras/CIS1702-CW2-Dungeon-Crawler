@@ -2,6 +2,8 @@
 '''
 
 from random import choice
+from random import random
+from random import randint
 import json
 
 try:
@@ -121,7 +123,7 @@ def choose_random_description(room: dict):
         if "description" in desc:
             descriptions.append(room[desc])
 
-    return choice(descriptions)
+    print(choice(descriptions))
 
 def choose_room(rooms: dict):
     '''
@@ -152,15 +154,62 @@ def decide_on_directions(room: dict):
 
     while True:
         try:
-            print(valid_connections)
-            choosen_direction = input(f"") #Remember to validate
+            print("The room has doors facing:", end="")
+            for con in valid_connections:
+                print(f", {con}", end="")
+
+            print("")
+
+            choosen_direction = input(f"Which door do you wish to walk through?\n").lower()
+
+            valid_choices = ["north", "south", "east", "west"]
+            if choosen_direction in valid_choices:
+                print("You have moved")
+                return choosen_direction
+            
+            else:
+                print("Incorrect input")
 
         except:
             pass
 
-        else:
-            return choosen_direction
         
+def empty_room():
+    """ Displays text to say the same thing in different ways.
+    """
+    rand_text=random.randint(0,3)
+    if rand_text==0:
+        print("The room is empty")
+    elif rand_text==1:
+        print("There's nothing in this room.")
+    elif rand_text==2:
+        print("This room is eerily quiet. There's nothing here.")
+
+def room_options(current_room, visited_rooms):
+    """ Used when in a room the player has already visited.
+    Shows the directions to rooms the player has visited
+    Tells the user about other directions they could go.
+    """
+    if current_room["connections"]["north"]==True:
+        if visited_rooms[current_room["name"]]["connections"]["north"]!=True: #If the connection has been replaced with a room reference
+            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["north"]]}")
+        else:
+            print("You can proceed north.")
+    elif current_room["connections"]["east"]==True:
+        if visited_rooms[current_room["name"]]["connections"]["east"]!=True: #If the connection has been replaced with a room reference
+            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["east"]]}")
+        else:
+            print("You can proceed east.")
+    elif current_room["connections"]["south"]==True:
+        if visited_rooms[current_room["name"]]["connections"]["south"]!=True: #If the connection has been replaced with a room reference
+            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["south"]]}")
+        else:
+            print("You can proceed south.")
+    elif current_room["connections"]["west"]==True:
+        if visited_rooms[current_room["name"]]["connections"]["west"]!=True: #If the connection has been replaced with a room reference
+            print(f"To the north is the {visited_rooms[current_room["name"]["connections"]["west"]]}")
+        else:
+            print("You can proceed west.")
 
 
 
