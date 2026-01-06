@@ -11,12 +11,6 @@ class player:
         OR we could just count items and make sure player cannot hold more then a max # of items
         '''
 
-    def move(self, direction):
-        ''' direction: input from user
-        - used for selecting rooms
-        '''
-        raise NotImplementedError
-    # not implemented error to ensure its obvious that the function does not work
 
     def combat(self, enemies: list):
         ''' Combat takes place in turns
