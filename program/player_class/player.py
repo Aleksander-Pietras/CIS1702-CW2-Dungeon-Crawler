@@ -3,7 +3,6 @@ from program.read_write_json.read_json import *
 
 class player:
     def __init__(self):
-        self.position = 0 # whatever the system is for room tracking
         self.health = 100
         self.inventory = []
         ''' WE could have a dir or a matrix if we wish to have max inventory space determined by weight

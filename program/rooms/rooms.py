@@ -4,6 +4,7 @@
 from random import choice
 from random import random
 from random import randint
+import random
 import json
 
 try:
@@ -177,13 +178,45 @@ def decide_on_directions(room: dict):
 def empty_room():
     """ Displays text to say the same thing in different ways.
     """
-    rand_text=random.randint(0,3)
+    rand_text=random.randint(0,2)
     if rand_text==0:
-        print("The room is empty")
+        print("The are no enemies in this room.")
     elif rand_text==1:
-        print("There's nothing in this room.")
+        print("You feel calm. Your instincts tell you this room is safe.")
     elif rand_text==2:
-        print("This room is eerily quiet. There's nothing here.")
+        print("This room is eerily quiet. There's no monsters here.")
+
+def choose_next_room(rooms_data, visited_rooms, direction_choice): #Will infinite loop if every room has been visited.
+    room_not_found = True
+    chosen_key = "Start Room"
+
+    while room_not_found == True:
+        room_not_found = False #Assumes found until proven otherwise
+        index=random.randint(0,len(rooms_data)-1)
+        count=0
+        for key in rooms_data:
+            if count == index:
+                chosen_key = key
+            count=count+1
+        
+        if chosen_key in visited_rooms: #If generated room has already been visited:
+            room_not_found=True
+        if rooms_data[chosen_key]["connections"][opposite_direction(direction_choice)] == False: #If generated room does not have a doorway in the correct direction.
+            room_not_found=True
+    
+    return rooms_data[chosen_key]
+
+def opposite_direction(direction):
+    opposite = "south"
+    if direction == "north":
+        opposite = "south"
+    elif direction == "east":
+        opposite = "west"
+    elif direction == "south":
+        opposite = "north"
+    else:
+        opposite="east"
+    return opposite
 
 def room_options(current_room, visited_rooms):
     """ Used when in a room the player has already visited.
