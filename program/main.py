@@ -11,8 +11,9 @@ from program.rooms.rooms import decide_on_directions
 from program.rooms.rooms import empty_room
 from program.rooms.rooms import choose_next_room
 from program.rooms.rooms import opposite_direction
-
 from program.genesis import intro_text
+
+from program.player_class.player import player
 
 
 if __name__ == "__main__": #Please can you make the main execution loop modular? Even if you just put all this in a function, I'd be happier.-Sophia
@@ -30,6 +31,8 @@ if __name__ == "__main__": #Please can you make the main execution loop modular?
     visited_rooms = {}
     direction_choice="north" #So direction choice is remembered between loops
 
+    player1 = player()
+
     intro_text()
     try:
         while True: #End when player dies
@@ -43,6 +46,21 @@ if __name__ == "__main__": #Please can you make the main execution loop modular?
                 empty_room()
 
             if not current_room["visited"]:
+
+                if current_room["enemies_active"]:
+                    num = random.randint(1, 3)
+                    enemies = []
+                    if num == 1:
+                        enemies.append(enemies_data["goblin"])
+                    elif num == 2:
+                        enemies.append(enemies_data["skeleton"])
+                        enemies.append(enemies_data["goblin"])
+                    else:
+                        enemies.append(enemies_data["orc"])
+
+                    player1.combat(enemies)
+
+                    
                 rooms_data[current_room["name"]]["visited"] = True
                 visited_rooms[current_room["name"]] = current_room #Adds the room to visited dictionary.
                 if current_room != start_room:
