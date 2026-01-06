@@ -39,13 +39,14 @@ def create_room():
     '''
     room_name = input("Enter the name of the room:\n")
     author_name = input("Enter the author's name for this room:\n (enter your name)\n")
+    description = input("Please enter a description for this room:\n")
 
     room = {
         "_meta" : {
             "author" : author_name
         },
         "name" : room_name,
-        "description" : "PLACE HOLDER",
+        "description" : description,
         "visited": False,
 
         "npc_active" :  False,
@@ -59,6 +60,8 @@ def create_room():
     npc_active = valid_bool("Are NPCs in this room?")
     if not npc_active:
         enemies_active = valid_bool("Are ENEMIES in this room?")
+    else:
+        enemies_active = False
     extra_function_active = valid_bool("Does the room have any other extra functions?")
 
     # Connections for the room
@@ -150,7 +153,7 @@ def decide_on_directions(room: dict):
     while True:
         try:
             print(valid_connections)
-            choosen_direction = input(f"")
+            choosen_direction = input(f"") #Remember to validate
 
         except:
             pass

@@ -10,7 +10,7 @@ npcs = {
 
     "Informat Caelan": {
         "name": "Caelan the Informat",
-        "into text": "Hello my frined, stay for a while and listen",
+        "into text": "Hello my friend, stay for a while and listen",
         "Gossip":"Angus is a man of great action, I imagined he never told you about this but he once did venture into the tombs himself years ago. He knows his fair share of danger. He is now a skilled craftsman and he is willing to help anyone with his courage and honesty.",
         "Gossip2": "While venturing deeper into the tombs you may find information that even I could not tell you my friend.",
         "Dark Lord Gossip": "The evil that you is ahead is the dark Lord of hell. Long before that evil was once imprisoned inside these tombs and the dark Lord once voweled that it rise from it's shackles a thousand years ago so it is your task to find the monster and elimate it for good.",
