@@ -1,0 +1,357 @@
+{
+    "rooms": {
+        "Library": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Library",
+            "description": "There are books scattered across the floor.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Dining Hall": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Dining Hall",
+            "description": "The air is stale. It has been a long time since food has graced the large wooden table.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            }
+        },
+        "Armory": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Armory",
+            "description": "The floor is cold stone and the armour stands in still metal. You notice the startings of rust on each set. None of this seems useful.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": true,
+            "connections": {
+                "north": true,
+                "south": false,
+                "east": false,
+                "west": false
+            }
+        },
+        "Weaponry": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Weaponry",
+            "description": "There are boxes of spears in crates, most look on the verge of collapse as their construction fails from years of disuse. In front are shelves, each holding a single, once-powerful weapon. They are weak with age, but they may still be of use.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": true,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Shop": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Shop",
+            "description": "You step into a warm, inviting room. While the underlying construction still creaks with age, the air here thrums with activity. There is no one else in the shop, but you can see products along every shelf, each radiating a magic of its' own. The shopkeeper greets you from the counter across the room.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            },
+            "npc": "Shopkeeper Angus"
+        },
+        "Cave": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Cave",
+            "description": "This room is a dark, stone cavern. Eery noises echo through it.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Stream": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Stream",
+            "description": "You can hear a trickle of water from this room. A gentle sound in a cold place.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Boss Room": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Boss Room",
+            "description": "The air vibrates with danger and your adrenaline starts running. A wide open, well-lit chamber lies in front of you. The large door closes behind you. You feel vulnerable as you look up at the monster before you.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": true,
+                "west": false
+            },
+            "npc": "The Dark Lord"
+        },
+        "Tiny Tunnel": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Tiny Tunnel",
+            "description": "You crawl through a narrow opening and find that there really is a way forward. Your head pops out the otherside and you see a monster right ahead! You scramble out of the tiny tunnel quickly and ready for battle.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": false,
+                "west": false
+            }
+        },
+        "Humungous Hallway": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Humungous Hallway",
+            "description": "You find a very large passage to the next area. You proceed to the other side of the room when you suddenly find a monster attacking you! How did you not see it before?",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": false,
+                "east": true,
+                "west": true
+            }
+        },
+        "Alley": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Alley",
+            "description": "You find a place that gives the same impression as an alleyway, despite there not really being ways to alley. A man greets you from next to the dimly-lit wall.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": true,
+                "west": true
+            },
+            "npc": "Informat Caelan"
+        },
+        "Fountain": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Fountain",
+            "description": "You come upon a white fountain full of murky green water.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            }
+        },
+        "Start Room": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Start Room",
+            "description": "You step into the first room of the dungeon and find the dungeon keeper standing before you.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": false,
+            "connections": {
+                "north": true,
+                "south": true,
+                "east": true,
+                "west": true
+            },
+            "npc": "Dungeon Keeper Cain"
+        },
+        "Meat Chamber": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Meat Chamber",
+            "description": "You enter a sickening space where blood flows across the floor and hanging bodies, animal and human alike, alike swing with the disturbed air. At the back of the room, you hear the sound of slicing meat. The awful sound ceases as the figure stops their work to look at you.",
+            "visited": false,
+            "npc_active": true,
+            "enemies_active": false,
+            "extra_function_active": true,
+            "connections": {
+                "north": true,
+                "south": false,
+                "east": false,
+                "west": true
+            },
+            "npc": "The Butcher"
+        },
+        "Scratched Room": {
+            "_meta": {
+                "author": "Sophia"
+            },
+            "name": "Scratched Room",
+            "description": "The walls are full of large gouges. It seems a very strong beast once resided here. Now though, the only thing to face you is a normal enemy.",
+            "visited": false,
+            "npc_active": false,
+            "enemies_active": true,
+            "extra_function_active": false,
+            "connections": {
+                "north": false,
+                "south": true,
+                "east": false,
+                "west": true
+            }
+        }
+    },
+    "enemies": {
+        "goblin": {
+            "enemy": "goblin",
+            "attack": 10,
+            "health": 50,
+            "Gold_Drop": 5
+        },
+        "skeleton": {
+            "enemy": "skeleton",
+            "attack": 15,
+            "health": 70,
+            "Gold_Drop": 10
+        },
+        "orc": {
+            "enemy": "orc",
+            "attack": 25,
+            "health": 90,
+            "Gold_Drop": 15
+        }
+    },
+    "npcs": {
+        "Shopkeeper Angus": {
+            "intro text": "Well what can I do for ya?",
+            "Open Shop": "If you are looking for a weapon let me show you this.",
+            "Gossip": "'Sometimes I think that Caelan talks too much, I suppose thats his calling in life. If I could bend steel as much as he could bend your ear then I could make a suit of crystal plates fit enough for an emperor!'",
+            "GoodBye": "I'll be seeing you later friend."
+        },
+        "Informat Caelan": {
+            "name": "Caelan the Informat",
+            "into text": "Hello my friend, stay for a while and listen",
+            "Gossip": "Angus is a man of great action, I imagined he never told you about this but he once did venture into the tombs himself years ago. He knows his fair share of danger. He is now a skilled craftsman and he is willing to help anyone with his courage and honesty.",
+            "Gossip2": "While venturing deeper into the tombs you may find information that even I could not tell you my friend.",
+            "Dark Lord Gossip": "The evil that you is ahead is the dark Lord of hell. Long before that evil was once imprisoned inside these tombs and the dark Lord once voweled that it rise from it's shackles a thousand years ago so it is your task to find the monster and elimate it for good.",
+            "The Butcher Gossip": "I've heard many myths and legends of a hidden away chamber within these tombs and there lies a foul beast who impales his victims on top of spears to keep as trophies. Many brave warriors have tried to challenge the dark evil only to never be seen again. Tread carefully my friend.",
+            "Goodbye": "Stay safe out there good friend"
+        },
+        "Dungeon Keeper Cain": {
+            "name": "Cain the Dungeon Keeper",
+            "intro text": "I have seen many like you enter these haunted tombs and never return."
+        },
+        "The Butcher": {
+            "name": "The Butcher",
+            "intro text": "Ahh. Freash meat!"
+        },
+        "The Dark Lord": {
+            "name": "The Dark Lord",
+            "intro text": "You dare disturb me mortal!"
+        }
+    },
+    "loot": {
+        "sword": { 
+            "item": "sword", 
+            "max_damage": 30, 
+            "min_damage": 10, 
+            "drop_rate": 0.5, 
+            "durability": 15
+        },
+        "dagger": { 
+            "item": "dagger", 
+            "max_damage": 20, 
+            "min_damage": 5, 
+            "drop_rate": 0.7, 
+            "durability": 10
+        },
+        "axe": { 
+            "item": "axe", 
+            "max_damage": 40, 
+            "min_damage": 15, 
+            "drop_rate": 0.3, 
+            "durability": 20
+        },
+        "bow": { 
+            "item": "bow", 
+            "max_damage": 25, 
+            "min_damage": 12, 
+            "drop_rate": 0.6, 
+            "durability": 12
+        },
+        "excalibur": { 
+            "item": "excalibur", 
+            "max_damage": 90, 
+            "min_damage": 50, 
+            "drop_rate": 0.001, 
+            "durability": 60
+        },
+        "bow of artemis": { 
+            "item": "bow of artemis", 
+            "max_damage": 70, 
+            "min_damage": 40, 
+            "drop_rate": 0.005, 
+            "durability": 50
+        }
+    }
+}
